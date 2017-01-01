@@ -27,6 +27,11 @@ files = {
             "action:temper_make",
         ],
     },
+    '/etc/udev/rules.d/99-tempsensor.rules': {
+        'source': "99-tempsensor.rules",
+        'owner': "root",
+        'mode': "0644",
+    },
 }
 
 actions = {
