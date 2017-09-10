@@ -2,16 +2,6 @@
 
 [TEMPer USB thermometers](http://pcsensor.com/usb-thermometers.html) are cheap and easy to use under Linux. This bundle receives [one of the many usb-thermometer](https://github.com/petervojtek/usb-thermometer) repositiries at GitHub, builds it and integrated with collectd if present.
 
-## Compatibility
-
-This bundle has been tested on the following systems:
-
-| OS          | `[x]` |
-| ----------- | ----- |
-| Fedora 24   | `[ ]` |
-| Fedora 25   | `[x]` |
-| Fedberry 24 | `[ ]` |
-
 ## Requirements
 
 * `libusb-devel`
