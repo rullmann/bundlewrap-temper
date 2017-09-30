@@ -17,7 +17,6 @@ git_deploy = {
 files = {
     '/opt/usb-thermometer/make-temper.sh': {
         'source': "make_temper.sh",
-        'owner': "root",
         'mode': "0755",
         'content_type': "mako",
         'needs': [
@@ -29,7 +28,6 @@ files = {
     },
     '/etc/udev/rules.d/99-tempsensor.rules': {
         'source': "99-tempsensor.rules",
-        'owner': "root",
         'mode': "0644",
     },
 }
@@ -45,8 +43,6 @@ if node.has_bundle("collectd"):
     files['/etc/collectd.d/temper.conf'] = {
         'source': "collectd.conf",
         'mode': "0640",
-        'owner': "root",
-        'group': "root",
         'triggers': [
             "svc_systemd:collectd:restart",
         ],
@@ -55,8 +51,6 @@ if node.has_bundle("collectd"):
     files['/opt/usb-thermometer/collectd.sh'] = {
         'source': "collectd.sh",
         'mode': "0755",
-        'owner': "nobody",
-        'group': "root",
         'triggers': [
             "svc_systemd:collectd:restart",
         ],
