@@ -8,9 +8,7 @@ git_deploy = {
     '/opt/usb-thermometer': {
         'repo': 'https://github.com/petervojtek/usb-thermometer.git',
         'rev': 'master',
-        'needs': [
-            'directory:/opt/usb-thermometer',
-        ],
+        'needs': ['directory:/opt/usb-thermometer'],
     },
 }
 
@@ -19,12 +17,8 @@ files = {
         'source': 'make_temper.sh',
         'mode': '0755',
         'content_type': 'mako',
-        'needs': [
-            'git_deploy:/opt/usb-thermometer',
-        ],
-        'triggers': [
-            'action:temper_make',
-        ],
+        'needs': ['git_deploy:/opt/usb-thermometer'],
+        'triggers': ['action:temper_make'],
     },
     '/etc/udev/rules.d/99-tempsensor.rules': {
         'source': '99-tempsensor.rules',
@@ -43,15 +37,11 @@ if node.has_bundle('collectd'):
     files['/etc/collectd.d/temper.conf'] = {
         'source': 'collectd.conf',
         'mode': '0640',
-        'triggers': [
-            'svc_systemd:collectd:restart',
-        ],
+        'triggers': ['svc_systemd:collectd:restart'],
     }
 
     files['/opt/usb-thermometer/collectd.sh'] = {
         'source': 'collectd.sh',
         'mode': '0755',
-        'triggers': [
-            'svc_systemd:collectd:restart',
-        ],
+        'triggers': ['svc_systemd:collectd:restart'],
     }
